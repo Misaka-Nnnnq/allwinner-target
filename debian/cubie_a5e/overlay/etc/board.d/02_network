@@ -1,0 +1,15 @@
+#!/bin/sh
+
+. /lib/functions/system.sh
+. /lib/functions/uci-defaults.sh
+
+board_config_update
+
+
+ucidef_set_interface_lan "eth0 wlan0"
+ucidef_set_interface_wan "eth1"
+
+
+board_config_flush
+
+exit 0
