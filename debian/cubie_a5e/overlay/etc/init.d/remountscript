@@ -5,24 +5,8 @@ STOP=99
 USE_PROCD=1
 
 start() {
-    current_time=$(date +"%Y-%m-%d %H:%M:%S")
-    
-    
-    /bin/touch /root/remount.log 2>&1 | grep -q "Read-only file system"
-
-    if [ $? -eq 0 ]; then
-        echo "$current_time - File system is read-only, remounting as read-write..." >> /root/remount.log
-        
-        
-        /bin/mount -o remount,rw /
-
-        
-        if [ $? -eq 0 ]; then
-            echo "$current_time - Remounted successfully." >> /root/remount.log
-        else
-            echo "$current_time - Failed to remount." >> /root/remount.log
-        fi
-    fi
+    echo "Start remountscript service..."
+    /bin/mount -o remount,rw /
 }
 
 stop() {
