@@ -14,7 +14,7 @@ start() {
         echo "$current_time - File system is read-only, remounting as read-write..." >> /root/remount.log
         
         
-        /usr/bin/mount -o remount,rw /
+        /bin/mount -o remount,rw /
 
         
         if [ $? -eq 0 ]; then
